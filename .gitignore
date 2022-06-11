@@ -1,0 +1,34 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+client/node_modules
+clien/.pnp
+clien/.pnp.js
+
+# testing
+clien/coverage
+
+# production
+clien/build
+
+# misc
+clien/.DS_Store
+
+
+
+clien/npm-debug.log*
+clien/yarn-debug.log*
+clien/yarn-error.log*
+
+clien/.eslintcache
+clien/CHANGELOG.md
+
+client/LICENSE.md
+
+client/README.md
+
+server/node_modules
+
+
+
+.eslintcache
