@@ -6,7 +6,7 @@ const postSchema = mongoose.Schema({
     message: String,
     taskType: {
         type: String,
-        enum: ['virtual', 'physical', 'public relation', 'support'],
+        enum: ['virtual', 'physical', 'public', 'support'],
         default: 'virtual'
       },
     duration :  Number,

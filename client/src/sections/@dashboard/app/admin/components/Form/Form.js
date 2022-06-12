@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper ,Select, InputLabel, MenuItem, handleChange, Container, Grid, Box, ListItemText, ListItemIcon, ListItemButton, List} from '@material-ui/core';
+import { TextField, Button, Typography, Paper ,Select, InputLabel, MenuItem, handleChange, Container, Grid, Box, ListItemText, ListItemIcon, ListItemButton, List} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-
+import FileBase from 'react-file-base64';
 
 import useStyles from './styles';
 import { createPost, updatePost } from '../../../../../../actions/tasks';
@@ -38,6 +38,8 @@ const Form = ({ currentId, setCurrentId }) => {
     execution:'',
     location:'',
     executionTime:'' ,
+    created:'',
+    requested:'',
     taskType:'' });
   };
 
@@ -78,6 +80,13 @@ const Form = ({ currentId, setCurrentId }) => {
         <TextField name="skills" variant="outlined" label="Skills (coma separated)" fullWidth value={postData.skills} onChange={(e) => setPostData({ ...postData, skills: e.target.value.split(',') })} />
         <TextField name="message" variant="outlined" label="Description" fullWidth multiline rows={2} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
        
+       <div >
+                      <FileBase
+                        type = "file"
+                        multiple = {false}
+                    />
+       </div>
+
         <Container>
         <Grid container spacing={2}>
           <Grid item xs={8}>

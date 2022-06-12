@@ -186,4 +186,21 @@ export const likePost = async (req, res) => {
 }
 
 
+export const requestPost = async (req, res) => {
+    console.log(req.params);
+    
+    const {id} = req.params;
+    const {uid} = req.body;
+    console.log(uid);
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const post = await PostTask.findById(id);
+
+    const updatedPost = await PostTask.findByIdAndUpdate(id, { requested: uid }, { new: true });
+
+    res.json(updatedPost);
+}
+
+
 export default router;

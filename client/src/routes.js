@@ -23,7 +23,7 @@ export default function Router() {
       children: [
         { path: 'app', element: <DashboardApp replace/> },
         { path: 'user', element: <User /> },
-        { path: 'taskassigned', element: <Blog /> },
+        { path: 'taskrequested', element: <Blog /> },
       ],
     },
     {

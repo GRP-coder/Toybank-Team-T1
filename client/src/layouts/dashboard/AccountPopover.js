@@ -40,7 +40,7 @@ export default function AccountPopover() {
 
   const logOut = () => {
     dispatch({type: 'LOGOUT'});
-    navigate('/login', { replace: true });
+    navigate('/', { replace: true });
     setUser(null);
   }
 

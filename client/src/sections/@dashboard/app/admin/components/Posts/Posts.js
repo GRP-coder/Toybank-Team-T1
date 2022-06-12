@@ -9,10 +9,18 @@ const Posts = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.tasks);
   const classes = useStyles();
 
+  const noReqPost = [];
+
+  posts.forEach(post => {
+    if(post.requested === '') noReqPost.push(post);
+  });
+
   return (
-    !posts.length ? <CircularProgress /> : (
+    !noReqPost.length ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-        {posts.map((post) => (
+        
+
+        {noReqPost.map((post) => (
           <Grid key={post._id} item xs={12} sm={6} md={6}>
             <Post post={post} setCurrentId={setCurrentId} />
           </Grid>
