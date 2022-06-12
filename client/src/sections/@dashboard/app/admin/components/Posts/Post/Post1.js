@@ -21,7 +21,7 @@ const Post = ({ post, setCurrentId }) => {
      
       <div className={classes.details}>
        <div>
-      <Typography variant="body2" color="textSecondary" >Estimated Task Duration : {post.Duration} Hrs</Typography>
+      <Typography variant="body2" color="textSecondary" >Estimated Task Duration : {post.duration} Hrs</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Type : {post.taskType}</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Date : {post.execution}</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Time(HH-MM) : {post.executionTime}</Typography>

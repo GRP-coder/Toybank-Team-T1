@@ -9,9 +9,9 @@ import { createPost, updatePost } from '../../../../../../actions/tasks';
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     title :'',
-    skills :[],
+    skills :'',
     message :'', 
-    duration :'',
+    duration : '',
     execution:'',
     location: '',
     executionTime:'',
@@ -20,7 +20,7 @@ const Form = ({ currentId, setCurrentId }) => {
     assigned : false,
     completed: false,
     taskType:'' });
-  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+  const post = useSelector((state) => (currentId ? state.tasks.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -34,7 +34,7 @@ const Form = ({ currentId, setCurrentId }) => {
     title :'',
     skills :'',
     message :'', 
-    Duration :'',
+    duration :'',
     execution:'',
     location:'',
     executionTime:'' ,
@@ -68,7 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <Typography variant="h6">{currentId ? `Editing "${post.title}"` : 'Post The Task'}</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
         
-        <TextField name="Duration" variant="outlined" label="Duration(HRS)" fullWidth value={postData.Duration} onChange={(e) => setPostData({ ...postData,Duration: e.target.value })} />
+        <TextField name="duration" variant="outlined" label="Duration(HRS)" fullWidth value={postData.duration} onChange={(e) => setPostData({ ...postData,duration: e.target.value })} />
         <TextField name="execution" variant="outlined" label="Execution Date(DD-MM-YYYY)" fullWidth value={postData.execution} onChange={(e) => setPostData({ ...postData,execution: e.target.value })} />
         <TextField name="execution" variant="outlined" label="Execution Time(HH-MM)" fullWidth value={postData.executionTime} onChange={(e) => setPostData({ ...postData,executionTime: e.target.value })} />
         <TextField name="location" variant="outlined" label="Location" fullWidth value={postData.location} onChange={(e) => setPostData({ ...postData,location: e.target.value })} />

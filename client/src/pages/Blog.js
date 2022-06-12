@@ -23,21 +23,10 @@ const SORT_OPTIONS = [
 
 export default function Blog() {
 
-  const tasks = useSelector((state) => state.tasks);
-
-  const modtasks = [];
-  
-  tasks.map((task) =>{
-    const startTimeString = moment(task.startTime).format("ddd, MMM Do YYYY, ha")
-    
-    task = {...task, startTimeStr : startTimeString} ;
-
-    modtasks.push(task);
-    
-  })
+ 
 
   return (
-    <Page title="Dashboard: Blog">
+    <Page title="Dashboard: Task Requested">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>

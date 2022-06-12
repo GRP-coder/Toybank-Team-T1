@@ -11,31 +11,32 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import DashboardApp from './pages/DashboardApp';
 import Blog from './pages/Blog'
-
+import LandApp from './pages/landing/src/LandApp'
 // ----------------------------------------------------------------------
 
 export default function Router() {
   return useRoutes([
+
     {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { path: 'app', element: <DashboardApp /> },
+        { path: 'app', element: <DashboardApp replace/> },
         { path: 'user', element: <User /> },
         { path: 'taskassigned', element: <Blog /> },
       ],
     },
     {
       path: '/',
-      element: <LogoOnlyLayout />,
-      children: [
-        { path: '/', element: <Navigate to="/dashboard/app" /> },
-        { path: 'login', element: <Login /> },
-        { path: 'register', element: <Register /> },
-        { path: '404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/404" /> },
-      ],
+      element: <LandApp />,
     },
+     
+    { path: '/login', element: <Login /> },
+    { path: '/register', element: <Register /> },
+    { path: '/404', element: <NotFound /> },
+    { path: '/*', element: <Navigate to="/404" replace/> },
+      
+
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
 }

@@ -6,10 +6,12 @@ import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
+const user = JSON.parse(localStorage.getItem('profile'))
 const Page = forwardRef(({ children, title = '', meta, ...other }, ref) => (
+  
   <>
     <Helmet>
-      <title>{`${title} | Minimal-UI`}</title>
+      <title>{`${title} |TOY-BANK| ${user?.result.role.toUpperCase()}` }</title>
       {meta}
     </Helmet>
 
