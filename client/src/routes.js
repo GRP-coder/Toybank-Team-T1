@@ -10,6 +10,7 @@ import NotFound from './pages/Page404';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import DashboardApp from './pages/DashboardApp';
+import TaskDone from './pages/TaskDone';
 import Blog from './pages/Blog'
 import LandApp from './pages/landing/src/LandApp'
 // ----------------------------------------------------------------------
@@ -23,7 +24,9 @@ export default function Router() {
       children: [
         { path: 'app', element: <DashboardApp replace/> },
         { path: 'user', element: <User /> },
-        { path: 'taskrequested', element: <Blog /> },
+        { path: 'taskassigned', element: <Blog /> },
+        { path: 'taskrequested', element: <Products /> },
+        { path: 'taskdone', element: <TaskDone /> },
       ],
     },
     {
@@ -36,7 +39,7 @@ export default function Router() {
     { path: '/404', element: <NotFound /> },
     { path: '/*', element: <Navigate to="/404" replace/> },
       
-
+  
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
 }

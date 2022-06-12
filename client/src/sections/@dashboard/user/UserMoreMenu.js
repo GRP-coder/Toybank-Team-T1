@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // material
 import { Menu, MenuItem, IconButton, ListItemIcon, ListItemText } from '@mui/material';
@@ -19,12 +19,15 @@ export default function UserMoreMenu(user) {
   
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleVerify = () =>{
+  const handleVerify = async () =>{
     user.id.verified = true;
-    dispatch(verifyUser(user.id._id, user.id));
+    const p = await dispatch(verifyUser(user.id._id, user.id));
+    navigate('/dashboard/app');
+    navigate('/dashboard/user');
   }
 
   return (

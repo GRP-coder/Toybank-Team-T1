@@ -23,12 +23,12 @@ const NavConfig = [{
             },
             {
               title: ' task requested' ,
-              path: '/dashboard/taskassigned',
+              path: '/dashboard/taskrequested',
               icon: getIcon('eva:file-text-fill'),
             },
             {
               title: ' task assigned' ,
-              path: '/dashboard/taskarequested',
+              path: '/dashboard/taskassigned',
               icon: getIcon('eva:file-text-fill'),
             },
           ]
@@ -38,7 +38,7 @@ if(user?.result.role === 'volunteer') {
     console.log(NavConfig);
     NavConfig.push({
       title: ' task done' ,
-      path: '/dashboard/taskassigned',
+      path: '/dashboard/taskdone',
       icon: getIcon('eva:file-text-fill'),
     });
     

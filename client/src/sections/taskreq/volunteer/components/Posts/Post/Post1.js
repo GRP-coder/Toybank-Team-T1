@@ -9,7 +9,7 @@ import RequestPage from '@mui/icons-material/RequestPage';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
-import { requestPost } from '../../../../../../../actions/tasks';
+import { requestPost } from '../../../../../../actions/tasks';
 import useStyles from './styles';
 
 
@@ -27,9 +27,9 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
 
   const requestHandle = async () => {
-    const p = await dispatch(requestPost(post._id, {uid : user.result._id}))
+    const p = await dispatch(requestPost(post._id, {uid : ''}))
     navigate('/dashboard');
-    navigate('/dashboard/app')
+    navigate('/dashboard/taskrequested')
   }
 
   return (
@@ -56,9 +56,9 @@ const Post = ({ post, setCurrentId }) => {
     </CardContent>
     <CardActions className={classes.cardActions}>
     <button style = {{color : 'blue', background : 'white', borderRadius: '5px' , textAlign: 'center', height:'40px', width:'120px'}} onClick={requestHandle}>
-      <RequestPage fontSize="small" />
+      <DeleteIcon fontSize="small" />
       <strong>
-      REQUEST
+      DELETE
       </strong>
       </button>
       

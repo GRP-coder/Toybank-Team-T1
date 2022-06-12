@@ -9,6 +9,8 @@ export const signin = (formData, history) => async (dispatch) => {
         
         history('/dashboard');
         history(0);
+        
+
     } catch (error) {
         console.log(error);
     }
@@ -23,6 +25,9 @@ export const signup = (formData, history) => async (dispatch)=>{
         
         history('/dashboard');
         history(0);
+        
+        
+
     } catch (error) {
         console.log(error);
     }

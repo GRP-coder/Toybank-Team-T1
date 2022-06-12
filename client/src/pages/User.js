@@ -80,16 +80,16 @@ export default function User() {
   const dispatch = useDispatch();
   
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [currentId, dispatch]);
+ 
 
   const users = useSelector((state) => state.auth);
   console.log(users);
 
- 
+ useEffect(() => {
+    dispatch(getUser());
+  }, [currentId, dispatch]);
 
-  const USERLIST = users;
+  const USERLIST =  users;
 
   const [page, setPage] = useState(0);
 
