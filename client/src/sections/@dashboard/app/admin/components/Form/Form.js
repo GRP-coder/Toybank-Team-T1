@@ -70,7 +70,7 @@ const Form = ({ currentId, setCurrentId }) => {
         
         <TextField name="duration" variant="outlined" label="Duration(HRS)" fullWidth value={postData.duration} onChange={(e) => setPostData({ ...postData,duration: e.target.value })} />
         <TextField name="execution" variant="outlined" label="Execution Date(DD-MM-YYYY)" fullWidth value={postData.execution} onChange={(e) => setPostData({ ...postData,execution: e.target.value })} />
-        <TextField name="execution" variant="outlined" label="Execution Time(HH-MM)" fullWidth value={postData.executionTime} onChange={(e) => setPostData({ ...postData,executionTime: e.target.value })} />
+        <TextField name="execution" variant="outlined" label="Execution Time(HH-MM AM/PM)" fullWidth value={postData.executionTime} onChange={(e) => setPostData({ ...postData,executionTime: e.target.value })} />
         <TextField name="location" variant="outlined" label="Location" fullWidth value={postData.location} onChange={(e) => setPostData({ ...postData,location: e.target.value })} />
         <TextField name="taskType" variant="outlined" label="Task Type(Virtual / Physical)" fullWidth value={postData.taskType} onChange={(e) => setPostData({ ...postData,taskType: e.target.value })} />
         

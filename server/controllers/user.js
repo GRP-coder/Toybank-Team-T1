@@ -1,7 +1,12 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+import express from 'express';
+import mongoose from 'mongoose';
+
 import User from '../models/user.js';
+
+const router = express.Router();
 
 export const signin = async (req, res) => {
     const {email, password} = req.body; 
@@ -26,7 +31,7 @@ export const signin = async (req, res) => {
 
 export const signup = async (req, res) => {
 
-    const {email, password,  firstName, lastName,address,role,skills,languages,assignedTasks,requestedTasks,taskHistory,location,verified}  = req.body;
+    const {email, password,  firstName, lastName,address,phone,role,skills,languages,assignedTasks,requestedTasks,taskHistory,location,verified}  = req.body;
     
     try {
         const existingUser = await User.findOne({email});
@@ -37,7 +42,7 @@ export const signup = async (req, res) => {
 
         const hashPassword = await bcrypt.hash(password, 12);
 
-        const result = await User.create({email, password : hashPassword, name: `${firstName} ${lastName}`, address,role,skills,languages,assignedTasks,requestedTasks,taskHistory,location,verified});
+        const result = await User.create({email, password : hashPassword, name: `${firstName} ${lastName}`, address,role,phone,skills,languages,assignedTasks,requestedTasks,taskHistory,location,verified});
 
         const token = jwt.sign({email: result.email, id : result._id, }, 'test', {expiresIn: "1h"});
         
@@ -48,3 +53,35 @@ export const signup = async (req, res) => {
     }
     
 }
+
+
+export const getUser = async (req, res) => {
+    try {
+        const postUser = await User.find();
+        console.log(postUser);
+        res.status(200).json(postUser);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
+export const verifyUser = async (req, res) => {
+    const { id } = req.params;
+    const { email, password,  firstName, lastName,address,phone,role,skills,
+        languages,assignedTasks,requestedTasks,taskHistory,location,verified} = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const updatedPost = { email, password,  firstName, lastName,address,phone,role,skills,
+        languages,assignedTasks,requestedTasks,taskHistory,location,verified, _id: id };
+
+    await User.findByIdAndUpdate(id, updatedPost, { new: true });
+
+    res.json(updatedPost);
+}
+
+
+
+
+
+export default router;

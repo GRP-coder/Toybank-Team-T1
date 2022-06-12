@@ -25,3 +25,7 @@ export const deletePost = (id) => axios.delete(`${url}/${id}`);
 export const signIn = (formData) => API.post('user/signin', formData);
 
 export const signUp = (formData) => API.post('user/signup', formData);
+
+export const getUser = () => API.get('user');
+
+export const verifyUser = (id, updateUser) =>API.patch(`user/${id}`, updateUser);

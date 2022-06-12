@@ -1,15 +1,31 @@
 import { useRef, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // material
 import { Menu, MenuItem, IconButton, ListItemIcon, ListItemText } from '@mui/material';
+
+
+
+import { Verified } from '@mui/icons-material';
+
 // component
 import Iconify from '../../../components/Iconify';
+import {verifyUser} from '../../../actions/auth'
 
 // ----------------------------------------------------------------------
 
-export default function UserMoreMenu() {
+export default function UserMoreMenu(user) {
+  console.log(user);
+  
+
+  const dispatch = useDispatch();
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleVerify = () =>{
+    user.id.verified = true;
+    dispatch(verifyUser(user.id._id, user.id));
+  }
 
   return (
     <>
@@ -27,19 +43,19 @@ export default function UserMoreMenu() {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <MenuItem sx={{ color: 'text.secondary' }}>
+        <MenuItem sx={{ color: 'text.secondary' }} onClick = {handleVerify}>
           <ListItemIcon>
-            <Iconify icon="eva:trash-2-outline" width={24} height={24} />
+            <Verified />
           </ListItemIcon>
-          <ListItemText primary="Delete" primaryTypographyProps={{ variant: 'body2' }} />
+          <ListItemText primary="Verify" primaryTypographyProps={{ variant: 'body2' }} />
         </MenuItem>
 
-        <MenuItem component={RouterLink} to="#" sx={{ color: 'text.secondary' }}>
+        {/* <MenuItem component={RouterLink} to="#" sx={{ color: 'text.secondary' }}>
           <ListItemIcon>
             <Iconify icon="eva:edit-fill" width={24} height={24} />
           </ListItemIcon>
           <ListItemText primary="Edit" primaryTypographyProps={{ variant: 'body2' }} />
-        </MenuItem>
+        </MenuItem> */}
       </Menu>
     </>
   );

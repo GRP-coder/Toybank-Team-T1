@@ -97,6 +97,7 @@ export default function RegisterForm() {
       firstName: '',
       lastName: '',
       email: '',
+      phone:'',
       password: '',
       address: '',
       role: '',

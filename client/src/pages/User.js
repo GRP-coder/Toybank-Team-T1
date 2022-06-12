@@ -1,7 +1,8 @@
 import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
-import { useState } from 'react';
+import {useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
 // material
 import {
   Card,
@@ -25,14 +26,17 @@ import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
+import {getUser} from '../actions/auth';
 // mock
-import USERLIST from '../_mock/user';
+// import USERLIST from '../_mock/user';
 
 // ----------------------------------------------------------------------
 
+
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
+  { id: 'email', label: 'Email', alignRight: false },
+  { id: 'phone', label: 'Phone No', alignRight: false },
   { id: 'role', label: 'Role', alignRight: false },
   { id: 'isVerified', label: 'Verified', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
@@ -71,6 +75,22 @@ function applySortFilter(array, comparator, query) {
 }
 
 export default function User() {
+
+  const [currentId, setCurrentId] = useState(0);
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [currentId, dispatch]);
+
+  const users = useSelector((state) => state.auth);
+  console.log(users);
+
+ 
+
+  const USERLIST = users;
+
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -159,40 +179,42 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                    const {_id, email, password,  name,address,phone,role,skills,
+                      languages,assignedTasks,requestedTasks,taskHistory,location,verified } = row;
                     const isItemSelected = selected.indexOf(name) !== -1;
 
                     return (
                       <TableRow
                         hover
-                        key={id}
+                        key={_id}
                         tabIndex={-1}
                         role="checkbox"
                         selected={isItemSelected}
                         aria-checked={isItemSelected}
                       >
                         <TableCell padding="checkbox">
-                          <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} />
+                          {/* <Checkbox checked={isItemSelected} onChange={(event) => handleClick(event, name)} /> */}
                         </TableCell>
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={name} src={avatarUrl} />
+                            {/* <Avatar alt={name} src={avatarUrl} /> */}
                             <Typography variant="subtitle2" noWrap>
                               {name}
                             </Typography>
                           </Stack>
                         </TableCell>
-                        <TableCell align="left">{company}</TableCell>
+                        <TableCell align="left">{email}</TableCell>
+                        <TableCell align="left">{phone || '123'}</TableCell>
                         <TableCell align="left">{role}</TableCell>
-                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
+                        <TableCell align="left">{verified ? 'Yes' : 'No'}</TableCell>
                         <TableCell align="left">
-                          <Label variant="ghost" color={(status === 'banned' && 'error') || 'success'}>
-                            {sentenceCase(status)}
+                          <Label variant="ghost" color={(verified &&  'success')|| 'error'}>
+                          {verified ? 'Verified' : 'Not VeriFied'}
                           </Label>
                         </TableCell>
 
                         <TableCell align="right">
-                          <UserMoreMenu />
+                          <UserMoreMenu id = {row}/>
                         </TableCell>
                       </TableRow>
                     );

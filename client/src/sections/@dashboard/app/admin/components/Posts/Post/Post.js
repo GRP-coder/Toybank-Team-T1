@@ -35,7 +35,7 @@ const Post = ({ post, setCurrentId }) => {
       <Typography variant="body2" color="textSecondary" >Estimated Task Duration : {post.duration} Hrs</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Type : {post.taskType}</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Date : {post.execution}</Typography>
-      <Typography variant="body2" color="textSecondary" >Execution Task Time(HH-MM) : {post.executionTime}</Typography>
+      <Typography variant="body2" color="textSecondary" >Execution Task Time : {post.executionTime}</Typography>
         <Typography variant="body2" color="textSecondary" component="h2">Skills: {post.skills.map((tag) => `${tag}, `)}</Typography>
       </div></div>
        
