@@ -28,7 +28,9 @@ A web app aimed to streamline the task and activity assignment workflow at ToyBa
 ## Screen shots
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/69973854/173387016-7aec3360-5031-48a3-86f0-e72a2a7a1fc7.gif)
 
-## how to run
+
+
+## How to run
 
 1. Go to server and client individually in terminal
 2. Run npm install
