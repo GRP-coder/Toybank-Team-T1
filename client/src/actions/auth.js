@@ -6,9 +6,21 @@ export const signin = (formData, history) => async (dispatch) => {
         const {data} = await api.signIn(formData);
 
         dispatch({type : 'AUTH', data});
+
         
-        history('/dashboard');
-        history(0);
+        if(!(data.result.verified)){
+          console.error("Admin Not Verified");
+          dispatch({type:'LOGOUT'});
+          history('/');
+
+        }
+        else{
+          history('/dashboard');
+          history(0);
+        }
+        
+        
+        
         
 
     } catch (error) {
@@ -21,6 +33,7 @@ export const signup = (formData, history) => async (dispatch)=>{
             // sign up the user
         const {data} = await api.signUp(formData);
 
+        
         dispatch({type : 'AUTH', data});
         
         history('/dashboard');

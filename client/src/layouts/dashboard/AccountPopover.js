@@ -18,12 +18,12 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
-    linkTo: '/dashboard',
+    linkTo: '/dashboard/app',
   },
   {
     label: 'Profile',
     icon: 'eva:person-fill',
-    linkTo: '#',
+    linkTo: '/dashboard/profile',
   },
 ];
 

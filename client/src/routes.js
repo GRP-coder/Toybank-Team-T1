@@ -13,6 +13,8 @@ import DashboardApp from './pages/DashboardApp';
 import TaskDone from './pages/TaskDone';
 import Blog from './pages/Blog'
 import LandApp from './pages/landing/src/LandApp'
+import Profile from './pages/profile/Profile'
+
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -22,6 +24,7 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
+        {path: 'profile', element: <Profile replace/>},
         { path: 'app', element: <DashboardApp replace/> },
         { path: 'user', element: <User /> },
         { path: 'taskassigned', element: <Blog /> },
