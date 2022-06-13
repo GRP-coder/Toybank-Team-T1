@@ -10,6 +10,7 @@ export const signin = (formData, history) => async (dispatch) => {
         
         if(!(data.result.verified)){
           console.error("Admin Not Verified");
+          alert("Admin Not Verified");
           dispatch({type:'LOGOUT'});
           history('/');
 

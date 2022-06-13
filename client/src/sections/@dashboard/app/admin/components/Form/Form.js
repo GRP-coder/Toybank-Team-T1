@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper ,Select, InputLabel, MenuItem, handleChange, Container, Grid, Box, ListItemText, ListItemIcon, ListItemButton, List} from '@mui/material';
+import { TextField, Button, Typography, Paper ,Select, InputLabel, MenuItem, handleChange, Container,FormControl,FormHelperText, Grid, Box, ListItemText, ListItemIcon, ListItemButton, List} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 
@@ -72,12 +72,53 @@ const Form = ({ currentId, setCurrentId }) => {
         
         <TextField name="duration" variant="outlined" label="Duration(HRS)" fullWidth value={postData.duration} onChange={(e) => setPostData({ ...postData,duration: e.target.value })} />
         <TextField name="execution" variant="outlined" label="Execution Date(DD-MM-YYYY)" fullWidth value={postData.execution} onChange={(e) => setPostData({ ...postData,execution: e.target.value })} />
-        <TextField name="execution" variant="outlined" label="Execution Time(HH-MM AM/PM)" fullWidth value={postData.executionTime} onChange={(e) => setPostData({ ...postData,executionTime: e.target.value })} />
-        <TextField name="location" variant="outlined" label="Location" fullWidth value={postData.location} onChange={(e) => setPostData({ ...postData,location: e.target.value })} />
-        <TextField name="taskType" variant="outlined" label="Task Type(Virtual / Physical)" fullWidth value={postData.taskType} onChange={(e) => setPostData({ ...postData,taskType: e.target.value })} />
+        <TextField name="execution" variant="outlined" label="Execution Time(HH:MM AM/PM)" fullWidth value={postData.executionTime} onChange={(e) => setPostData({ ...postData,executionTime: e.target.value })} />
+        
+        <Box sx={{m:1, width: 300}}>
+          <FormControl fullWidth>
+            <InputLabel >Location</InputLabel>
+            <Select
+              
+              value={postData.location}
+              
+              onChange={(e) => setPostData({ ...postData,location: e.target.value })}
+            >
+              <MenuItem value={'outside Mumbai'}>Outside Mumbai</MenuItem>
+              <MenuItem value={'navi Mumbai'}>Navi Mumbai</MenuItem>
+              <MenuItem value={'central zone'}>Central Zone</MenuItem>
+              <MenuItem value={'western zone'}>Western Zone</MenuItem>
+              <MenuItem value={'harbour zone'}>Harbour Zone</MenuItem>
+              <MenuItem value={'office'}>In-Office (Mahim)</MenuItem>
+              <MenuItem value={'virtual'}>Virtual</MenuItem>
+              
+            </Select>
+          </FormControl>
+        </Box>
+        
+        {/* <TextField name="location" variant="outlined" label="Location" fullWidth value={postData.location} onChange={(e) => setPostData({ ...postData,location: e.target.value })} /> */}
+        
+        
+        <Box  sx={{m:1, width: 300, marginTop:'10px' }}>
+          <FormControl fullWidth>
+            <InputLabel>Type</InputLabel>
+            <Select
+              
+              value={postData.taskType} onChange={(e) => setPostData({ ...postData,taskType: e.target.value })}
+            >
+              <MenuItem value={'virtual'}>Virtual</MenuItem>
+              <MenuItem value={'physical'}>Physical</MenuItem>
+              <MenuItem value={'public'}>Public Relation</MenuItem>
+              <MenuItem value={'support'}>Support Related</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        
+        
+        
+        {/* <TextField name="taskType" variant="outlined" label="Task Type(Virtual / Physical)" fullWidth value={postData.taskType} onChange={(e) => setPostData({ ...postData,taskType: e.target.value })} /> */}
         
 
-        <TextField name="skills" variant="outlined" label="Skills (coma separated)" fullWidth value={postData.skills} onChange={(e) => setPostData({ ...postData, skills: e.target.value.split(',') })} />
+        <TextField name="skills" variant="outlined" label="Skills (coma separated, all small)" fullWidth value={postData.skills} onChange={(e) => setPostData({ ...postData, skills: e.target.value.split(',') })} />
         <TextField name="message" variant="outlined" label="Description" fullWidth multiline rows={2} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
        
        <div >

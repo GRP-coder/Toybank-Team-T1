@@ -23,7 +23,7 @@ const Posts = ({ setCurrentId }) => {
         
 
         {noReqPost.map((post) => (
-          <Grid key={post._id} item xs={12} sm={12} md={12}>
+          <Grid key={post._id} item xs={12} sm={12} md={4}>
             <Post post={post} setCurrentId={setCurrentId} />
           </Grid>
         ))}
