@@ -10,8 +10,11 @@ A web app aimed to streamline the task and activity assignment workflow at ToyBa
  * https://toybank-team-t1.netlify.app/
 
 ## Technology Stack:
-  1) Express
-  2) MongoDB
+  1) NodeJS
+  2) React
+  3) Express
+  4) MongoDB
+  5) Material UI
   
 
 ## Contributors:
