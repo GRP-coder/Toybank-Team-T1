@@ -19,7 +19,7 @@ const Posts = ({ setCurrentId }) => {
     !noReqPost.length ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3} >
         {noReqPost.map((post) => (
-          <Grid key={post._id} item xs={12} sm={12} md={4}>
+          <Grid key={post._id} item xs={12} sm={6} md={4}>
             <Post post={post} setCurrentId={setCurrentId} />
           </Grid>
         ))}

@@ -17,7 +17,7 @@ export const signin = (formData, history) => async (dispatch) => {
 
         }
         else{
-          history('/dashboard');
+          history('/dashboard/app');
           history(0);
         }
         
