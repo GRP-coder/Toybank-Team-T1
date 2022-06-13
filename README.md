@@ -3,7 +3,7 @@
 </p>
 
 ## Introduction:
-A web app aimed to streamline the task and activity assignment workflow at ToyBank NGO. Intrusted people can sign up as volunteers and pick the jobs they want to do, and make a request. This request will then be raised to the admins at ToyBank, who can either allow or decline the said request.  And if the request is accepted, the volunteer will be assigned the task.
+A web app aimed to streamline the task and activity assignment workflow at ToyBank NGO. Intrested people can sign up as volunteers and pick the tasks they want from the available tasks posted by admins of Toy Bank, and make a request. This request will then be raised to the admins at ToyBank, who can either allow or decline the said request.  And if the request is accepted, the volunteer will be assigned the task, after completion of the task admin can put task as done this can be used as an attendance feature.
   
 #Live Site
 
