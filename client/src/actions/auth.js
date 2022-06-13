@@ -8,6 +8,7 @@ export const signin = (formData, history) => async (dispatch) => {
         dispatch({type : 'AUTH', data});
 
         
+        
         if(!(data.result.verified)){
           console.error("Admin Not Verified");
           alert("Admin Not Verified");
@@ -26,6 +27,9 @@ export const signin = (formData, history) => async (dispatch) => {
 
     } catch (error) {
         console.log(error);
+        alert(error.response.data.message);
+        history(0);
+
     }
 }
 
