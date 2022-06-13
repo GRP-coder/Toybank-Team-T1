@@ -30,5 +30,6 @@ export const signIn = (formData) => API.post('user/signin', formData);
 export const signUp = (formData) => API.post('user/signup', formData);
 
 export const getUser = () => API.get('user');
+export const getOneUser = (id) => API.get(`user/${id}`, id);
 
 export const verifyUser = (id, updateUser) =>API.patch(`user/${id}`, updateUser);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState , useEffect} from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -8,9 +8,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import Cancel from '@mui/icons-material/Cancel';
 import {useNavigate} from 'react-router-dom';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 
 import {deletePost, requestPost, assignPost, donePost } from '../../../../../../actions/tasks';
+import {   getOneUser } from '../../../../../../actions/auth';
 import useStyles from './styles';
 
 
@@ -32,6 +33,12 @@ const Post = ({ post, setCurrentId }) => {
     navigate('/dashboard/taskassigned')
   }
 
+    
+  useEffect(async () => {
+    const p = await dispatch(getOneUser(post.requested));
+  }, [dispatch, post._id]);
+
+  const userReq =  useSelector((state1) => state1.auth);
   
 
   return (
@@ -59,6 +66,9 @@ const Post = ({ post, setCurrentId }) => {
       <Typography variant="body2" color="textSecondary" >Execution Task Date : {post.execution}</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Time : {post.executionTime}</Typography>
         <Typography variant="body2" color="textSecondary" component="h2">Skills: {post.skills.map((tag) => `${tag}, `)}</Typography>
+        <Typography variant="body2" color="primary" marginTop ="10px"><strong>Requested By : {userReq.name} </strong></Typography>
+        <Typography variant="body2" color="primary" ><strong>Skills : {userReq.skills}, {userReq.languages}</strong> </Typography>
+        <Typography variant="body2" color="primary" ><strong>Email : {userReq.email}</strong> </Typography>
       </div></div>
        
       <CardContent>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
@@ -8,13 +8,15 @@ import EditIcon from '@material-ui/icons/Edit';
 import Cancel from '@mui/icons-material/Cancel';
 import Done from '@mui/icons-material/Done';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 import {   deletePost, requestPost, assignPost } from '../../../../../../actions/tasks';
+import {   getOneUser } from '../../../../../../actions/auth';
 import useStyles from './styles';
 
 
-const Post = ({ post, setCurrentId }) => {
+const Post =  ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const navigate = useNavigate();
@@ -32,6 +34,26 @@ const Post = ({ post, setCurrentId }) => {
     navigate('/dashboard');
     navigate('/dashboard/taskrequested')
   }
+
+  
+  
+  useEffect(async () => {
+    const p = dispatch(getOneUser(post.requested));
+  }, [dispatch, post._id]);
+
+  const userReq =  useSelector((state1) => state1.auth);
+
+  
+    
+  // const getReqUser = async () =>{
+  //  setUserRequested(await dispatch(getOneUser(post.requested)));
+    
+  //   console.log(userRequested);
+  // }
+  
+  
+
+  
 
   return (
     <Card sx={{ position: 'relative' }} className={classes.card} style = {{marginTop : '20px'}}>
@@ -58,6 +80,9 @@ const Post = ({ post, setCurrentId }) => {
       <Typography variant="body2" color="textSecondary" >Execution Task Date : {post.execution}</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Time : {post.executionTime}</Typography>
         <Typography variant="body2" color="textSecondary" component="h2">Skills: {post.skills.map((tag) => `${tag}, `)}</Typography>
+        <Typography variant="body2" color="primary" marginTop ="10px"><strong>Requested By : {userReq.name} </strong></Typography>
+        <Typography variant="body2" color="primary" ><strong>Skills : {userReq.skills}, {userReq.languages}</strong> </Typography>
+        <Typography variant="body2" color="primary" ><strong>Email : {userReq.email}</strong> </Typography>
       </div></div>
        
       <CardContent>
