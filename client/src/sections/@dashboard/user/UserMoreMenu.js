@@ -15,7 +15,7 @@ import {verifyUser} from '../../../actions/auth'
 // ----------------------------------------------------------------------
 
 export default function UserMoreMenu(user) {
-  console.log(user);
+  
   
 
   const dispatch = useDispatch();

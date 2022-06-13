@@ -45,7 +45,7 @@ const Post = ({ post, setCurrentId }) => {
       </CardContent>
       <CardActions className={classes.cardActions}>
       <button style = {{color : 'blue', background : 'white', borderRadius: '5px' , textAlign: 'right'}} onClick={() => dispatch(deletePost(post._id))}>
-        <DeleteIcon fontSize="small" />
+        <DeleteIcon fontSize="medium" />
         </button>
         {/* <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button> */}
       </CardActions>

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import Posts1 from './components/Posts/Posts1';
 
-import { getPosts } from '../../../../actions/tasks';
+import { getPosts } from '../../../actions/tasks';
 import useStyles from './styles';
 
 

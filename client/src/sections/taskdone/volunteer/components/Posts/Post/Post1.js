@@ -9,7 +9,7 @@ import RequestPage from '@mui/icons-material/RequestPage';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
-import { requestPost } from '../../../../../../../actions/tasks';
+import { requestPost } from '../../../../../../actions/tasks';
 import useStyles from './styles';
 
 
@@ -20,7 +20,7 @@ const Post = ({ post, setCurrentId }) => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
 
-  console.log(user.result._id);  
+  
   
 
   const dispatch = useDispatch();
@@ -54,15 +54,7 @@ const Post = ({ post, setCurrentId }) => {
     Description:
       <Typography variant="body2" color="textSecondary" component="p"> {post.message}</Typography>
     </CardContent>
-    <CardActions className={classes.cardActions}>
-    <button style = {{color : 'blue', background : 'white', borderRadius: '5px' , textAlign: 'center', height:'40px', width:'120px'}} onClick={requestHandle}>
-      <RequestPage fontSize="small" />
-      <strong>
-      REQUEST
-      </strong>
-      </button>
-      
-    </CardActions>
+    
   </Card>
     
       

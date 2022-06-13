@@ -1,20 +1,37 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import EditIcon from '@material-ui/icons/Edit';
+import Cancel from '@mui/icons-material/Cancel';
 import Done from '@mui/icons-material/Done';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
-import {   deletePost } from '../../../../../../actions/tasks';
+import {   deletePost, requestPost, assignPost } from '../../../../../../actions/tasks';
 import useStyles from './styles';
 
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem('profile'))
+
+  const requestHandle = async () => {
+    const p = await dispatch(requestPost(post._id, {uid : ''}))
+    navigate('/dashboard');
+    navigate('/dashboard/taskrequested')
+  }
+
+  const assignHandle = async () => {
+    const p = await dispatch(assignPost(post._id, {assigned : true}))
+    navigate('/dashboard');
+    navigate('/dashboard/taskrequested')
+  }
 
   return (
     <Card sx={{ position: 'relative' }} className={classes.card} style = {{marginTop : '20px'}}>
@@ -25,7 +42,7 @@ const Post = ({ post, setCurrentId }) => {
         <Typography variant="body2" style={{color:"red" }}>Posted {moment(post.createdAt).fromNow()}</Typography>
       </div>
       <div className={classes.overlay2}>
-        <button style = {{color : 'yellow', background : 'blue', borderRadius: '5px', textAlign: 'center', height:'40px', width:'100px'}} onClick={() => setCurrentId(post._id)}>
+        <button style = {{color : 'yellow', background : 'blue', borderRadius: '5px', textAlign: 'center', height:'40px', width:'100px'}} onClick={assignHandle}>
         <Done fontSize="medium"  /> 
         <strong>
         ASSIGN
@@ -49,7 +66,10 @@ const Post = ({ post, setCurrentId }) => {
       </CardContent>
       <CardActions className={classes.cardActions}>
       <button style = {{color : 'blue', background : 'white', borderRadius: '5px' , textAlign: 'right'}} onClick={() => dispatch(deletePost(post._id))}>
-        <DeleteIcon fontSize="small" />
+        <DeleteIcon fontSize="medium" />
+        </button>
+        <button style = {{color : 'blue', background : 'white', borderRadius: '5px' , textAlign: 'right'}} onClick={requestHandle}>
+        <Cancel fontSize="medium" />
         </button>
         {/* <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button> */}
       </CardActions>

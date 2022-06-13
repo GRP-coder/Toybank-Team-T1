@@ -187,17 +187,50 @@ export const likePost = async (req, res) => {
 
 
 export const requestPost = async (req, res) => {
-    console.log(req.params);
+    
     
     const {id} = req.params;
     const {uid} = req.body;
-    console.log(uid);
+    
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
     const post = await PostTask.findById(id);
 
     const updatedPost = await PostTask.findByIdAndUpdate(id, { requested: uid }, { new: true });
+
+    res.json(updatedPost);
+}
+
+
+export const assignPost = async (req, res) => {
+    
+    
+    const {id} = req.params;
+    const {assigned} = req.body;
+    
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const post = await PostTask.findById(id);
+
+    const updatedPost = await PostTask.findByIdAndUpdate(id, { assigned : assigned }, { new: true });
+
+    res.json(updatedPost);
+}
+
+export const donePost = async (req, res) => {
+    
+    
+    const {id} = req.params;
+    const {completed} = req.body;
+    
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const post = await PostTask.findById(id);
+
+    const updatedPost = await PostTask.findByIdAndUpdate(id, { completed : completed }, { new: true });
 
     res.json(updatedPost);
 }

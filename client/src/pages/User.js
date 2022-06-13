@@ -83,7 +83,7 @@ export default function User() {
  
 
   const users = useSelector((state) => state.auth);
-  console.log(users);
+  
 
  useEffect(() => {
     dispatch(getUser());

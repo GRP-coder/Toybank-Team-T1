@@ -12,8 +12,7 @@ const Posts1 = ({ setCurrentId , ttype}) => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
 
-  console.log(user.result.skills, 'skills')
-  console.log(user.result.languages, 'languages')
+  
 
   const noReqPost = [];
 
@@ -22,7 +21,7 @@ const Posts1 = ({ setCurrentId , ttype}) => {
   });
 
   const noReqPostF = [];
-  console.log(ttype.ttype);
+  
 if(ttype.ttype !== 'suggested'){
 
  noReqPost.forEach(post => {

@@ -58,7 +58,7 @@ export const signup = async (req, res) => {
 export const getUser = async (req, res) => {
     try {
         const postUser = await User.find();
-        console.log(postUser);
+        
         res.status(200).json(postUser);
     } catch (error) {
         res.status(404).json({ message: error.message });

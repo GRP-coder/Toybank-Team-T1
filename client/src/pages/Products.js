@@ -30,7 +30,7 @@ export default function EcommerceShop() {
         <Typography variant="h4" sx={{ mb: 5 }}>
 
         {(user.result.role === 'admin')?(
-            'REQUESTED TASKS'
+            ' TASKS REQUESTED '
         ):(
           'TASKS REQUESTED'
         )}

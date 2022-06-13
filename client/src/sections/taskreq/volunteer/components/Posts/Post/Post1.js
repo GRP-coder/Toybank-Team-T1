@@ -20,7 +20,7 @@ const Post = ({ post, setCurrentId }) => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
 
-  console.log(user.result._id);  
+  
   
 
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ const Post = ({ post, setCurrentId }) => {
     </CardContent>
     <CardActions className={classes.cardActions}>
     <button style = {{color : 'blue', background : 'white', borderRadius: '5px' , textAlign: 'center', height:'40px', width:'120px'}} onClick={requestHandle}>
-      <DeleteIcon fontSize="small" />
+      <DeleteIcon fontSize="medium" />
       <strong>
       DELETE
       </strong>

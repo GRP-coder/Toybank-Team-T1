@@ -12,7 +12,7 @@ const Posts = ({ setCurrentId }) => {
   const noReqPost = [];
 
   posts.forEach(post => {
-    if(post.requested === '') noReqPost.push(post);
+    if(post.requested !== '' && (post.assigned) && !(post.completed)) noReqPost.push(post);
   });
 
   return (
@@ -21,7 +21,7 @@ const Posts = ({ setCurrentId }) => {
         
 
         {noReqPost.map((post) => (
-          <Grid key={post._id} item xs={12} sm={6} md={6}>
+          <Grid key={post._id} item xs={12} sm={12} md={12}>
             <Post post={post} setCurrentId={setCurrentId} />
           </Grid>
         ))}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid, CircularProgress } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 import Post1 from './Post/Post1';
@@ -12,36 +12,17 @@ const Posts1 = ({ setCurrentId , ttype}) => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
 
-  console.log(user.result.skills, 'skills')
-  console.log(user.result.languages, 'languages')
-
   const noReqPost = [];
 
   posts.forEach(post => {
-    if(post.requested === '') noReqPost.push(post);
+    if(post.requested === user.result._id && (post.assigned) && (post.completed)) noReqPost.push(post);
   });
-
-  const noReqPostF = [];
-  console.log(ttype.ttype);
-if(ttype.ttype !== 'suggested'){
-
- noReqPost.forEach(post => {
-    if(post.taskType === ttype.ttype) noReqPostF.push(post);
-  });
-}
-else{
-  noReqPost.forEach(post => {
-    post.skills.forEach(skill =>{
-     if(user.result.skills.indexOf(skill) !== -1 || user.result.languages.indexOf(skill) !== -1) noReqPostF.push(post);
-    })
-  });
-}
-
+  
 
   return (
-    !noReqPostF.length ? <CircularProgress /> : (
+    !noReqPost.length ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3} style = {{ position: 'relative',}}>
-        {noReqPostF.map((post) => (
+        {noReqPost.map((post) => (
           <Grid key={post._id} item xs={12} sm={6} md={4}>
             <Post1 post={post} setCurrentId={setCurrentId} />
             

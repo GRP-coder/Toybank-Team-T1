@@ -62,3 +62,25 @@ export const requestPost = (id, uid) => async (dispatch) =>{
     console.log(error.message);
   }
 };
+
+export const assignPost = (id, assigned) => async (dispatch) =>{
+  try {
+    
+    const { data } = await api.assignPost(id, assigned);
+
+    dispatch({ type: 'REQUEST', payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const donePost = (id, completed) => async (dispatch) =>{
+  try {
+    
+    const { data } = await api.donePost(id, completed);
+
+    dispatch({ type: 'REQUEST', payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

@@ -4,7 +4,7 @@ export const getTasks = async (req, res) => {
     try {
         const tasks = await Tasks.find();
 
-        console.log(tasks);
+        
 
         res.status(200).json(tasks);
     } catch (error) {

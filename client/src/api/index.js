@@ -21,6 +21,8 @@ export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${url}/${id}`);
 export const requestPost = (id, uid) => axios.patch(`${url}/${id}/requestPost`, uid);
+export const assignPost = (id, assigned) => axios.patch(`${url}/${id}/assignPost`, assigned);
+export const donePost = (id, completed) => axios.patch(`${url}/${id}/donePost`, completed);
 
 
 export const signIn = (formData) => API.post('user/signin', formData);

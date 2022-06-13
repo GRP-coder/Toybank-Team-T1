@@ -8,6 +8,8 @@ import { Grid, Button, Container, Stack, Typography } from '@mui/material';
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
+import App from '../sections/taskdone/admin/App'
+import App1 from '../sections/taskdone/volunteer/App'
 // mock
 import POSTS from '../_mock/blog';
 
@@ -23,28 +25,27 @@ const SORT_OPTIONS = [
 
 export default function Blog() {
 
- 
+  const user = JSON.parse(localStorage.getItem('profile'))
 
   return (
-    <Page title="Dashboard: Task Requested">
+    <Page title="Dashboard: Task Completed">
       <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            TASKS
-          </Typography>
+      <Typography variant="h4" sx={{ mb: 5 }}>
+
+        {(user.result.role === 'admin')?(
+                'TASKS COMPLETED'
+            ):(
+              'TASKS COMPLETED'
+            )}
           
-        </Stack>
-
-        <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch posts={POSTS} />
-          <BlogPostsSort options={SORT_OPTIONS} />
-        </Stack>
-
-        <Grid container spacing={3}>
-          {POSTS.map((post, index) => (
-            <BlogPostCard key={post.id} post={post} index={index} />
-          ))}
-        </Grid>
+      </Typography>
+      <div>
+              {(user.result.role === 'admin')?(
+                  <App/>
+              ):(
+                <App1/>
+              )}
+      </div>
       </Container>
     </Page>
   );

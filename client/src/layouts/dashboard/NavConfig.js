@@ -22,26 +22,24 @@ const NavConfig = [{
               icon: getIcon('eva:people-fill'),
             },
             {
-              title: ' task requested' ,
+              title: 'requested tasks' ,
               path: '/dashboard/taskrequested',
-              icon: getIcon('eva:file-text-fill'),
+              icon: getIcon('eva:message-square-fill'),
             },
             {
-              title: ' task assigned' ,
+              title: 'assigned tasks' ,
               path: '/dashboard/taskassigned',
               icon: getIcon('eva:file-text-fill'),
             },
+            {
+              title: 'completed tasks' ,
+              path: '/dashboard/taskdone',
+              icon: getIcon('eva:checkmark-circle-2-fill'),
+            }
           ]
 
 if(user?.result.role === 'volunteer') {
     NavConfig.splice(1,1);
-    console.log(NavConfig);
-    NavConfig.push({
-      title: ' task done' ,
-      path: '/dashboard/taskdone',
-      icon: getIcon('eva:file-text-fill'),
-    });
-    
   }
 
 

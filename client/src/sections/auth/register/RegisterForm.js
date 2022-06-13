@@ -42,7 +42,7 @@ const handleCheckbox = (e, formik) =>{
     formik.values.languages.splice(index, 1);
     
   }
-  console.log(formik.values);
+  
 }
 
 const handleCheckboxSkill = (e, formik) =>{
@@ -52,7 +52,7 @@ const handleCheckboxSkill = (e, formik) =>{
     formik.values.skills.splice(index, 1);
     
   }
-  console.log(formik.values);
+  
 }
 
 const handleCheckboxLocation = (e, formik) =>{
@@ -62,7 +62,7 @@ const handleCheckboxLocation = (e, formik) =>{
     formik.values.location.splice(index, 1);
     
   }
-  console.log(formik.values);
+  
 }
 
 export default function RegisterForm() {
@@ -112,7 +112,7 @@ export default function RegisterForm() {
     },
     validationSchema: RegisterSchema,
     onSubmit: () => {
-      console.log(formik.values);
+      
       dispatch(signup(formik.values, navigate));
 
     },

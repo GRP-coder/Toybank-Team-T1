@@ -6,7 +6,7 @@ export const getTaskClassifications = async(req, res) => {
     try {
         const taskClassifications = await TaskClassification.find();
 
-        console.log(taskClassifications);
+        
 
         res.status(200).json(taskClassifications);
     } catch (error) {

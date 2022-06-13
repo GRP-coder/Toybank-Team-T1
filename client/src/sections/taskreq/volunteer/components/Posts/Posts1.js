@@ -17,7 +17,7 @@ const Posts1 = ({ setCurrentId }) => {
   const noReqPost = [];
 
   posts.forEach(post => {
-    if(post.requested === user.result._id) noReqPost.push(post);
+    if(post.requested === user.result._id && !(post.assigned)) noReqPost.push(post);
   });
 
   
