@@ -21,7 +21,8 @@ const Posts1 = ({ setCurrentId , ttype}) => {
   });
 
   const noReqPostF = [];
-  
+  const noreqID = [];
+
 if(ttype.ttype !== 'suggested'){
 
  noReqPost.forEach(post => {
@@ -31,7 +32,10 @@ if(ttype.ttype !== 'suggested'){
 else{
   noReqPost.forEach(post => {
     post.skills.forEach(skill =>{
-     if(user.result.skills.indexOf(skill) !== -1 || user.result.languages.indexOf(skill) !== -1) noReqPostF.push(post);
+     if((user.result.skills.indexOf(skill) !== -1 || user.result.languages.indexOf(skill) !== -1) && noreqID.indexOf(post._id) === -1) {
+      noReqPostF.push(post);
+      noreqID.push(post._id);
+    }
     })
   });
 }

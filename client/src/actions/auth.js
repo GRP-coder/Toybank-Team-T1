@@ -8,14 +8,16 @@ export const signin = (formData, history) => async (dispatch) => {
         dispatch({type : 'AUTH', data});
 
         
-        if(!(data.result.verified)){
+        
+        if(!(data.result.verified) && data.result.role === 'admin'){
           console.error("Admin Not Verified");
+          alert("Admin Not Verified");
           dispatch({type:'LOGOUT'});
           history('/');
 
         }
         else{
-          history('/dashboard');
+          history('/dashboard/app');
           history(0);
         }
         
@@ -25,6 +27,9 @@ export const signin = (formData, history) => async (dispatch) => {
 
     } catch (error) {
         console.log(error);
+        alert(error.response.data.message);
+        history(0);
+
     }
 }
 
@@ -35,14 +40,27 @@ export const signup = (formData, history) => async (dispatch)=>{
 
         
         dispatch({type : 'AUTH', data});
+
+        if(!(data.result.verified )&& data.result.role === 'admin'){
+          console.error("Admin Not Verified");
+          alert("Admin Not Verified");
+          dispatch({type:'LOGOUT'});
+          history('/');
+
+        }
+        else{
+          history('/dashboard/app');
+          history(0);
+        }
         
-        history('/dashboard');
-        history(0);
+        
         
         
 
     } catch (error) {
-        console.log(error);
+      console.log(error);
+      alert(error.response.data.message);
+      history(0);
     }
 }
 
@@ -62,6 +80,21 @@ export const getUser = () => async (dispatch) => {
       const { data } = await api.verifyUser(id, user);
   
       dispatch({ type: 'VERIFY', payload: data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  export const getOneUser = (id) => async (dispatch) => {
+    try {
+      const { data } = await api.getOneUser(id);
+      // console.log(data);
+      
+  
+      dispatch({ type: 'FETCH_ONE', payload: data });
+
+      return data;
+
     } catch (error) {
       console.log(error.message);
     }

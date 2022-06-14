@@ -2,26 +2,26 @@
 
 # dependencies
 client/node_modules
-clien/.pnp
-clien/.pnp.js
+client/.pnp
+client/.pnp.js
 
 # testing
-clien/coverage
+client/coverage
 
 # production
-clien/build
+client/build
 
 # misc
-clien/.DS_Store
+client/.DS_Store
 
 
 
-clien/npm-debug.log*
-clien/yarn-debug.log*
-clien/yarn-error.log*
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
 
-clien/.eslintcache
-clien/CHANGELOG.md
+client/.eslintcache
+client/CHANGELOG.md
 
 client/LICENSE.md
 

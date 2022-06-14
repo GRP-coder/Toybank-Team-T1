@@ -79,7 +79,9 @@ export default function Register() {
         {mdUp && (
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5}}>
-              REGISTER TO BE A VOLUNTEER AT TOY BANK AND START A NEW JOURNEY
+              WELCOME TO THE EXCITING WORLD OF 
+              <br/>
+              <strong style ={{color : 'blue'}}>TOY BANK</strong>
             </Typography>
             <img alt="register" src="/static/illustrations/illustration_register.png" />
           </SectionStyle>
@@ -95,13 +97,13 @@ export default function Register() {
             <RegisterForm />
 
             <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
-              By registering, I agree to TOY BANK&nbsp;
+            &nbsp;By registering, I agree to TOY BANK&nbsp;
               <Link underline="always" color="text.primary" href="#">
-                Terms of Service
+              &nbsp;Terms of Service&nbsp;
               </Link>
-              {''}and{''}
+              {'  '}and{' '}
               <Link underline="always" color="text.primary" href="#">
-                Privacy Policy
+              &nbsp;Privacy Policy&nbsp;
               </Link>
               .
             </Typography>

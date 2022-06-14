@@ -80,6 +80,18 @@ export const verifyUser = async (req, res) => {
     res.json(updatedPost);
 }
 
+export const getOneUser = async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        const postUser = await User.findById(id);
+        console.log(postUser);
+        res.status(200).json(postUser);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
 
 
 

@@ -184,7 +184,7 @@ export default function RegisterForm() {
           />
           <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">role</InputLabel>
+            <InputLabel id="demo-simple-select-label">Role</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
