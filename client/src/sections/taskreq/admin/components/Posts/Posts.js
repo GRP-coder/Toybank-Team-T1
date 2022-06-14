@@ -1,15 +1,18 @@
 import React from 'react';
 import { Grid, CircularProgress } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Post from './Post/Post';
 import useStyles from './styles';
+import {   getUser } from '../../../../../actions/auth';
 
 const user = JSON.parse(localStorage.getItem('profile'));
 
 const Posts = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.tasks);
   const classes = useStyles();
+  const dispatch = useDispatch();
+  
 
   const noReqPost = [];
 

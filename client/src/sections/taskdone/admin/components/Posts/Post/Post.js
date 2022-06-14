@@ -16,14 +16,45 @@ const Post =  ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
+  const [userReq, setureq] = useState('');
 
+  let userNAME = [];
+  let userSkills = [];
+  let userlang = [];
+  let userEmail = [];
+
+  const disfunc = async () => {
+    const userRe = await dispatch(getOneUser(post.requested));
+    setureq(userRe);
+    
+  }
+
+  useEffect(() =>{
+    const p = disfunc();
+  },[post.requested])
+
+  userNAME = userReq.name;
+  userSkills = userReq.skills;
+  userlang = userReq.languages;
+  userEmail = userReq.email;
   
 
-useEffect(async () => {
-    const p = await dispatch(getOneUser(post.requested));
-  }, [dispatch, post.requested]);
+// useEffect(async () => {
+//     const p = ;
+//     console.log(p.data);
+//     userReq = p.data;
+    
+    
+//   }, [post._id, post.requested]);
 
-  const userReq =  useSelector((state1) => state1.auth);
+//  
+
+  // console.log(userReq, post._id);
+
+ 
+
+
+   console.log(userSkills);
 
   
 
@@ -43,9 +74,9 @@ useEffect(async () => {
       <Typography variant="body2" color="textSecondary" >Execution Task Date : {post.execution}</Typography>
       <Typography variant="body2" color="textSecondary" >Execution Task Time : {post.executionTime}</Typography>
         <Typography variant="body2" color="textSecondary" component="h2">Skills: {post.skills.map((tag) => `${tag}, `)}</Typography>
-        <Typography variant="body2" color="primary" marginTop ="10px"><strong>Requested By : {userReq.name} </strong></Typography>
-        <Typography variant="body2" color="primary" ><strong>Skills : {userReq.skills}, {userReq.languages}</strong> </Typography>
-        <Typography variant="body2" color="primary" ><strong>Email : {userReq.email}</strong> </Typography>
+        <Typography variant="body2" color="primary" marginTop ="10px"><strong>Requested By : {userNAME} </strong></Typography>
+        <Typography variant="body2" color="primary" ><strong>Skills : {userSkills}, {userlang}</strong> </Typography>
+        <Typography variant="body2" color="primary" ><strong>Email : {userEmail}</strong> </Typography>
       </div></div>
        
       <CardContent>

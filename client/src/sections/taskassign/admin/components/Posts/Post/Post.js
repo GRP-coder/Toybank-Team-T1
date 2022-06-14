@@ -33,12 +33,21 @@ const Post = ({ post, setCurrentId }) => {
     navigate('/dashboard/taskassigned')
   }
 
-    
-  useEffect(async () => {
-    const p = await dispatch(getOneUser(post.requested));
-  }, [dispatch, post._id]);
+  const [userReq, setureq] = useState('');
 
-  const userReq =  useSelector((state1) => state1.auth);
+  const disfunc = async () => {
+    const userRe = await dispatch(getOneUser(post.requested));
+    setureq(userRe);
+  }
+
+  useEffect(() =>{
+    const p = disfunc();
+  },[post.requested])  
+
+  const userSkills = userReq.skills;
+  const userlang = userReq.languages;
+
+  
   
 
   return (
