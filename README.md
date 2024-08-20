@@ -7,7 +7,7 @@ A web app aimed to streamline the task and activity assignment workflow at ToyBa
   
 #Live Site
 
- * [https://toybank-team-t1.netlify.app/](https://toybank-volunteer.netlify.app/)
+ * [https://toybank-volunteer.netlify.app/](https://toybank-volunteer.netlify.app/)
 
 ## Technology Stack:
   1) NodeJS
