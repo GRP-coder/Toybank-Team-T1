@@ -201,7 +201,7 @@ export default function RegisterForm() {
 
         {userType === 'volunteer'?(
         <>
-            <div align = 'center'> HI {formik.values.firstName.toUpperCase()} LET'S KNOW YOU BETTER</div>
+            <div> HI {formik.values.firstName.toUpperCase()} LET'S KNOW YOU BETTER</div>
             <TextField
             fullWidth
             autoComplete="Address"
